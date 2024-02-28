@@ -1,5 +1,5 @@
 //variabile per numero di celle
-let cellsNumber = 100;
+let cellsNumber;
 
 //assegno variabile al contenitore delle celle
 const cellContainer = document.querySelector(".container")
@@ -12,10 +12,45 @@ const gameContainer = document.getElementById("game")
 const btnPlay = document.getElementById("play")
 //console.log(btnPlay);
 
+//assegno variabile al select
+const setDifficulty = document.getElementById("difficulty")
+//console.log(setDifficulty, setDifficulty.value);
+
 //click per far apparire il gioco
-btnPlay.addEventListener("click", function(){
+btnPlay.addEventListener("click", function () {
+
+    //far apparire il gioco
     gameContainer.classList.remove("d-none")
+
+    //assegnare un valore a cellsNumber per la quantità di celle da generare
+    if (setDifficulty.value === "easy") {
+        cellsNumber = 100;
+    }
+    else if (setDifficulty.value === "normal") {
+        cellsNumber = 81;
+    }
+    else if (setDifficulty.value === "hard") {
+        cellsNumber = 49;
+    }
+
+
+    //ciclo for per generare 100 celle con dentro 100 numeri progressivi
+    for (let i = 1; i <= cellsNumber; i++) {
+        //console.log(i);
+        let cellNumber = i;
+        const cellGenerated = generateCell("div", "cell", cellNumber);
+        cellContainer.insertAdjacentElement("beforeend", cellGenerated)
+
+        //al click la casella diventa blu
+        cellGenerated.addEventListener("click", function () {
+            cellGenerated.classList.toggle("blue")
+
+            //stampa numero in console al click
+            console.log(cellNumber);
+        })
+    }
 })
+
 
 //funzione per generare una cella
 
@@ -38,19 +73,3 @@ function generateCell(tag, className, number) {
 //console.log(generateCell("div", "cell", 1));
 
 
-
-//ciclo for per generare 100 celle con dentro 100 numeri progressivi
-for (let i = 1; i <= cellsNumber; i++) {
-    //console.log(i);
-    let cellNumber = i;
-    const cellGenerated = generateCell("div", "cell", cellNumber);
-    cellContainer.insertAdjacentElement("beforeend", cellGenerated)
-
-    //al click la casella diventa blu
-    cellGenerated.addEventListener("click", function(){
-        cellGenerated.classList.toggle("blue")
-
-        //stampa numero in console al click
-        console.log(cellNumber);
-    })   
-}

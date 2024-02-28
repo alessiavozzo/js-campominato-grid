@@ -1,5 +1,5 @@
 /* #region reset */
-*{
+* {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
@@ -8,49 +8,49 @@
 /* #endregion reset */
 
 /* #region common */
-body{
+body {
     height: 100vh;
 }
 
-.d-none{
+.d-none {
     display: none;
 }
 
 /* #endregion common */
 
 /* #region header */
-header{
+header {
     height: 120px;
     background-color: white;
 
-    > nav{
+    >nav {
         height: 100%;
         padding: 1.5rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
 
-        > .logo{
+        >.logo {
             height: 100%;
             display: flex;
             align-items: center;
             gap: 1rem;
 
-            > img{
+            >img {
                 height: 100%;
             }
 
-            > h1{
+            >h1 {
                 font-size: 3rem;
             }
         }
 
-        > .btn{
+        .btn {
             font-size: 1.5rem;
             padding: 0.5rem 2rem 0.5rem 2rem;
             border-radius: 20px;
 
-            &:hover{
+            &:hover {
                 cursor: pointer;
                 background-color: lightgray;
             }
@@ -61,16 +61,17 @@ header{
 /* #endregion header */
 
 /* #region main */
-main{
+main {
     background-color: aquamarine;
     height: calc(100vh - 220px);
 }
 
-#game{
+#game {
     padding-top: 2rem;
     padding-bottom: 2rem;
 }
-.container{
+
+.container {
     width: 50%;
     height: 100%;
     max-width: 600px;
@@ -78,24 +79,25 @@ main{
     display: flex;
     flex-wrap: wrap;
 
-    > .cell{
+    >.cell {
         width: 60px;
         height: 60px;
         display: flex;
         justify-content: center;
         align-items: center;
-        border: 1px solid black;     
-        
-        &.blue{
+        border: 1px solid black;
+
+        &.blue {
             background-color: lightskyblue;
         }
+    }
 }
 
 /* #endregion main */
 
 
 /* #region footer */
-footer{
+footer {
     height: 100px;
     background-color: white;
     font-size: 1.5rem;
@@ -104,4 +106,5 @@ footer{
     align-items: center;
 
 }
+
 /* #endregion footer */
