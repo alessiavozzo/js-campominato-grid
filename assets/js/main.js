@@ -2,7 +2,7 @@
 let cellsNumber;
 
 //assegno variabile al contenitore delle celle
-const cellContainer = document.querySelector(".container")
+const cellContainer = document.getElementById("cells-container")
 //console.log(cellContainer);
 
 //assegno variabile al contenitore del gioco
@@ -25,12 +25,15 @@ btnPlay.addEventListener("click", function () {
     //assegnare un valore a cellsNumber per la quantità di celle da generare
     if (setDifficulty.value === "easy") {
         cellsNumber = 100;
+        cellContainer.style.maxWidth = "600px"
     }
     else if (setDifficulty.value === "normal") {
         cellsNumber = 81;
+        cellContainer.style.maxWidth = "540px"
     }
     else if (setDifficulty.value === "hard") {
         cellsNumber = 49;
+        cellContainer.style.maxWidth = "420px"
     }
 
 
