@@ -24,4 +24,18 @@ function generateCell(tag, className, number) {
     return singleCell;
 }
 
-console.log(generateCell("div", "cell", 1));
+//console.log(generateCell("div", "cell", 1));
+
+
+
+//ciclo for per generare 100 celle con dentro 100 numeri progressivi
+for (let i = 1; i <= 100; i++) {
+    //console.log(i);
+    let cellNumber = i;
+    const cellGenerated = generateCell("div", "cell", cellNumber);
+    cellContainer.insertAdjacentElement("beforeend", cellGenerated)
+    cellGenerated.addEventListener("click", function(){
+        cellGenerated.classList.toggle("red")
+        console.log(cellNumber);
+    })   
+}

@@ -12,22 +12,42 @@ body{
 
 /* header */
 header{
-    height: 150px;
+    height: 120px;
     background-color: lightgray;
 }
 
 /* main */
 main{
     background-color: aquamarine;
-    height: calc(100vh - 250px);
+    height: calc(100vh - 220px);
 }
 
+.game{
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
 .container{
-    max-width: 1000px;
+    width: 50%;
+    height: 100%;
+    max-width: 750px;
     margin: auto;
     border: 1px solid black;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+
+    > .cell{
+        width: 70px;
+        height: 70px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid red;     
+        
+        &.red{
+            background-color: red;
+        }
+    }
 }
 
 /* footer */
