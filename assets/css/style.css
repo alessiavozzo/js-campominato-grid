@@ -10,10 +10,28 @@ body{
     height: 100vh;
 }
 
+.d-none{
+    display: none;
+}
+
 /* header */
 header{
     height: 120px;
     background-color: lightgray;
+
+    > nav{
+        height: 100%;
+        padding: 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        > .btn{
+            font-size: 1.5rem;
+            padding: 0.5rem 2rem 0.5rem 2rem;
+            border-radius: 20px;
+        }
+    }
 }
 
 /* main */
@@ -22,30 +40,28 @@ main{
     height: calc(100vh - 220px);
 }
 
-.game{
+#game{
     padding-top: 2rem;
     padding-bottom: 2rem;
 }
 .container{
     width: 50%;
     height: 100%;
-    max-width: 750px;
+    max-width: 600px;
     margin: auto;
-    border: 1px solid black;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
 
     > .cell{
-        width: 70px;
-        height: 70px;
+        width: 60px;
+        height: 60px;
         display: flex;
         justify-content: center;
         align-items: center;
-        border: 1px solid red;     
+        border: 1px solid black;     
         
-        &.red{
-            background-color: red;
+        &.blue{
+            background-color: lightskyblue;
         }
     }
 }
