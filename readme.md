@@ -20,3 +20,4 @@ Aggiungere una select accanto al bottone di generazione, che fornisca una scelta
 - Generare con ciclo for numeri progressivi da 1 a 100, uno per cella
     (funzione per generare la cella da inserire in un ciclo for?)
 - Click su cella: al click la cella diventa azzurra (.toggle) e stampa numero in console
+- Click su bottone play: al click appare la griglia
