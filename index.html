@@ -29,12 +29,14 @@
             <div class="controls">
 
                 <!-- select difficulty-->
-                <label for="difficulty">Set the difficulty</label>
-                <select name="difficulty" id="difficulty">
-                    <option value="easy">Easy</option>
-                    <option value="normal">Normal</option>
-                    <option value="hard">Hard</option>
-                </select>
+                <div class="set-diff">
+                    <label for="difficulty">Set the difficulty:</label>
+                    <select name="difficulty" id="difficulty">
+                        <option value="easy">Easy</option>
+                        <option value="normal">Normal</option>
+                        <option value="hard">Hard</option>
+                    </select>
+                </div>
 
                 <!-- btn play -->
                 <button id="play" class="btn">
@@ -50,7 +52,7 @@
     <!-- /#site_main -->
     <main id="site_main">
 
-        <div id="game" class="d-none">
+        <div id="game">
             <div id="cells-container" class="container">
 
                 <!-- griglia da js qui -->

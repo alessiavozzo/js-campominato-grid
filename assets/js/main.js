@@ -16,12 +16,13 @@ const btnPlay = document.getElementById("play")
 const setDifficulty = document.getElementById("difficulty")
 //console.log(setDifficulty, setDifficulty.value);
 
+
+
 //click per far apparire il gioco
 btnPlay.addEventListener("click", function () {
 
-    //far apparire il gioco
-    gameContainer.classList.remove("d-none")
-
+    cellContainer.innerHTML = ""
+    
     //assegnare un valore a cellsNumber per la quantità di celle da generare
     if (setDifficulty.value === "easy") {
         cellsNumber = 100;
@@ -38,6 +39,7 @@ btnPlay.addEventListener("click", function () {
 
 
     //ciclo for per generare 100 celle con dentro 100 numeri progressivi
+    //richiamo la funzione di generazione celle 
     for (let i = 1; i <= cellsNumber; i++) {
         //console.log(i);
         let cellNumber = i;
@@ -53,6 +55,7 @@ btnPlay.addEventListener("click", function () {
         })
     }
 })
+
 
 
 //funzione per generare una cella

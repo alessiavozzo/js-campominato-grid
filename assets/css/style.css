@@ -12,10 +12,6 @@ body {
     height: 100vh;
 }
 
-.d-none {
-    display: none;
-}
-
 /* #endregion common */
 
 /* #region header */
@@ -47,12 +43,39 @@ header {
 
         .btn {
             font-size: 1.5rem;
-            padding: 0.5rem 2rem 0.5rem 2rem;
+            padding: 0.5rem 2rem;
             border-radius: 20px;
 
             &:hover {
                 cursor: pointer;
                 background-color: lightgray;
+            }
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+
+            .set-diff{
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+
+                >label{
+                    font-size: 1.2rem;
+                }
+    
+                >select{
+                    font-size: 1.3rem;
+                    padding: 0.2rem 1.5rem;
+                    border-radius: 20px;
+
+                    &:hover{
+                        cursor: pointer;
+                    }
+                }
             }
         }
     }
@@ -62,18 +85,18 @@ header {
 
 /* #region main */
 main {
-    background-color: aquamarine;
+    background-color: lightseagreen;
     height: calc(100vh - 220px);
 }
 
 #game {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .container {
     width: 50%;
-    height: 100%;
     margin: auto;
     display: flex;
     flex-wrap: wrap;
@@ -85,6 +108,7 @@ main {
         justify-content: center;
         align-items: center;
         border: 1px solid black;
+        background-color: lightgray;
 
         &.blue {
             background-color: lightskyblue;
