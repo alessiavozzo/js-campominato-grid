@@ -19,12 +19,18 @@ const setDifficulty = document.getElementById("difficulty");
 //creo un array per contenere i numeri casuali
 const mushroomArray = [];
 
+//variabili per elementi in pagina per terminare il gioco
+const h2Element = document.querySelector("h2")
+const endElement = document.getElementById("end")
+const resetBtn = document.getElementById("endBtn")
+
+
 //click per far apparire il gioco
 btnPlay.addEventListener("click", function () {
 
     cellContainer.innerHTML = "";
     mushroomArray.splice(0, mushroomArray.length)
-    
+
     //assegnare un valore a cellsNumber per la quantità di celle da generare
     if (setDifficulty.value === "easy") {
         cellsNumber = 100;
@@ -39,40 +45,55 @@ btnPlay.addEventListener("click", function () {
         cellContainer.style.maxWidth = "420px";
     }
     //console.log(cellsNumber, typeof cellsNumber);
-    
+
 
     //ciclo while per riempire l'array con i numeri casuali da 1 a cellsNumber
     while (mushroomArray.length < 16) {
-        
+
         let randomNumber = getRandomNumber(1, cellsNumber);
 
-        if(!mushroomArray.includes(randomNumber)){
-            mushroomArray.push(randomNumber)
-        }        
+        if (!mushroomArray.includes(randomNumber)) {
+            mushroomArray.push(randomNumber);
+        }
     }
     console.log(mushroomArray);
 
 
+    let counter = 0
+    //console.log(counter);
     //ciclo for per generare 100 celle con dentro 100 numeri progressivi
     //richiamo la funzione di generazione celle 
     for (let i = 1; i <= cellsNumber; i++) {
         //console.log(i);
         let cellNumber = i;
         const cellGenerated = generateCell("div", "cell", cellNumber);
-        cellContainer.insertAdjacentElement("beforeend", cellGenerated)
+        cellContainer.insertAdjacentElement("beforeend", cellGenerated);
 
-        //al click la casella diventa blu
+        //al click la casella diventa blu o rossa
         cellGenerated.addEventListener("click", function () {
 
-            if(!mushroomArray.includes(cellNumber)){
-                cellGenerated.classList.add("blue")
+            if (!mushroomArray.includes(cellNumber)) {
+                cellGenerated.classList.add("blue");
+                counter++;
             }
-            else if(mushroomArray.includes(cellNumber)){
-                cellGenerated.classList.add("red")
+
+            else if (mushroomArray.includes(cellNumber)) {
+                cellGenerated.classList.add("red");
+                cellGenerated.innerText = "🍄";
+                //console.log(counter);            
+                endElement.classList.replace("d-none", "d-flex");
+                h2Element.innerHTML = `Hai perso! Il tuo punteggio è ${counter}`;
+                
+                //hai perso? reset game
+                resetBtn.addEventListener("click", function(){
+                    cellContainer.innerHTML = "";
+                    endElement.classList.replace("d-flex", "d-none");
+                })
             }
 
             //stampa numero in console al click
-            console.log(cellNumber);
+            //console.log(cellNumber);
+            //console.log(counter);
         })
     }
 })
@@ -109,6 +130,9 @@ function generateCell(tag, className, number) {
  * @returns {number}
  */
 function getRandomNumber(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) ) + min;            
-  }
- 
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+
+
+
