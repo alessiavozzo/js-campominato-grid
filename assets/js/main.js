@@ -20,31 +20,19 @@ const setDifficulty = document.getElementById("difficulty");
 const mushroomArray = [];
 
 //variabili per elementi in pagina per terminare il gioco
-const h2Element = document.querySelector("h2")
-const endElement = document.getElementById("end")
-const resetBtn = document.getElementById("endBtn")
+const h2Element = document.querySelector("h2");
+const endElement = document.getElementById("end");
+const resetBtn = document.getElementById("endBtn");
 
 
 //click per far apparire il gioco
 btnPlay.addEventListener("click", function () {
 
     cellContainer.innerHTML = "";
-    mushroomArray.splice(0, mushroomArray.length)
+    mushroomArray.splice(0, mushroomArray.length);
 
     //assegnare un valore a cellsNumber per la quantità di celle da generare
-    if (setDifficulty.value === "easy") {
-        cellsNumber = 100;
-        cellContainer.style.maxWidth = "600px";
-    }
-    else if (setDifficulty.value === "normal") {
-        cellsNumber = 81;
-        cellContainer.style.maxWidth = "540px";
-    }
-    else if (setDifficulty.value === "hard") {
-        cellsNumber = 49;
-        cellContainer.style.maxWidth = "420px";
-    }
-    //console.log(cellsNumber, typeof cellsNumber);
+    setLevel();   
 
 
     //ciclo while per riempire l'array con i numeri casuali da 1 a cellsNumber
@@ -59,7 +47,7 @@ btnPlay.addEventListener("click", function () {
     console.log(mushroomArray);
 
 
-    let counter = 0
+    let counter = 0;
     //console.log(counter);
     //ciclo for per generare 100 celle con dentro 100 numeri progressivi
     //richiamo la funzione di generazione celle 
@@ -73,47 +61,39 @@ btnPlay.addEventListener("click", function () {
         cellGenerated.addEventListener("click", function () {
 
             if (!mushroomArray.includes(cellNumber)) {
-                cellGenerated.classList.add("blue");
+
+                cellChangeColor(cellGenerated, "blue", cellNumber);                
                 counter++;
 
                 if (cellsNumber - document.querySelectorAll(".blue").length === mushroomArray.length) {
+                    
                     endElement.classList.replace("d-none", "d-flex");
-                    h2Element.innerHTML = `Hai vinto! Il tuo punteggio è ${counter}`;
+                    h2Element.innerHTML = `Hai vinto! 🍄 Il tuo punteggio è ${counter}`;
 
-                    //hai vinto? reset game
-                    resetBtn.addEventListener("click", function () {
-                        cellContainer.innerHTML = "";
-                        endElement.classList.replace("d-flex", "d-none");
-                    })
+                    //hai vinto? reset game                                        
+                    resetBtn.addEventListener("click", resetGame);
                 }
 
             }
 
             else if (mushroomArray.includes(cellNumber)) {
-                cellGenerated.classList.add("red");
-                cellGenerated.innerText = "🍄";
+                cellChangeColor(cellGenerated, "red", "🍄");                
+                
                 //console.log(counter);            
                 endElement.classList.replace("d-none", "d-flex");
                 h2Element.innerHTML = `Hai perso! Il tuo punteggio è ${counter}`;
 
-                //hai perso? reset game
-                resetBtn.addEventListener("click", function () {
-                    cellContainer.innerHTML = "";
-                    endElement.classList.replace("d-flex", "d-none");
-                })
+                //hai perso? reset game  
+                resetBtn.addEventListener("click", resetGame);
             }
 
-            //console.log(document.querySelectorAll(".blue").length);
-            //console.log(mushroomArray.length);
-            //console.log(cellsNumber - mushroomArray.length);
-            //stampa numero in console al click
-            //console.log(cellNumber);
-            //console.log(counter);
         })
     }
 })
 
 
+
+/* FUNZIONI */
 
 //funzione per generare una cella
 
@@ -129,7 +109,7 @@ function generateCell(tag, className, number) {
     const singleCell = document.createElement(tag);
     singleCell.classList.add(className);
     singleCell.innerHTML = number;
-
+    
     return singleCell;
 }
 
@@ -150,4 +130,44 @@ function getRandomNumber(min, max) {
 
 
 
+//funzione per reset game
+/**
+ * Resets the game
+ */
+function resetGame() {
+    cellContainer.innerHTML = "";
+    endElement.classList.replace("d-flex", "d-none");
+}
 
+
+//funzione per cambio colore casella
+/**
+ * 
+ * @param {HTMLElement} htmlGeneratedElement 
+ * @param {string} className 
+ * @param {string} content 
+ */
+function cellChangeColor(htmlGeneratedElement, className, content) {
+    htmlGeneratedElement.classList.add(className);
+    htmlGeneratedElement.innerText = content;
+}
+
+
+//funzione per settare il livello
+/**
+ * Set the cells number
+ */
+function setLevel() {
+    if (setDifficulty.value === "easy") {
+        cellsNumber = 100;
+        cellContainer.style.maxWidth = "600px";
+    }
+    else if (setDifficulty.value === "normal") {
+        cellsNumber = 81;
+        cellContainer.style.maxWidth = "540px";
+    }
+    else if (setDifficulty.value === "hard") {
+        cellsNumber = 49;
+        cellContainer.style.maxWidth = "420px";
+    }
+}
