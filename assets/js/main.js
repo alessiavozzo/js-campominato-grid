@@ -75,6 +75,18 @@ btnPlay.addEventListener("click", function () {
             if (!mushroomArray.includes(cellNumber)) {
                 cellGenerated.classList.add("blue");
                 counter++;
+
+                if (cellsNumber - document.querySelectorAll(".blue").length === mushroomArray.length) {
+                    endElement.classList.replace("d-none", "d-flex");
+                    h2Element.innerHTML = `Hai vinto! Il tuo punteggio è ${counter}`;
+
+                    //hai vinto? reset game
+                    resetBtn.addEventListener("click", function () {
+                        cellContainer.innerHTML = "";
+                        endElement.classList.replace("d-flex", "d-none");
+                    })
+                }
+
             }
 
             else if (mushroomArray.includes(cellNumber)) {
@@ -83,14 +95,17 @@ btnPlay.addEventListener("click", function () {
                 //console.log(counter);            
                 endElement.classList.replace("d-none", "d-flex");
                 h2Element.innerHTML = `Hai perso! Il tuo punteggio è ${counter}`;
-                
+
                 //hai perso? reset game
-                resetBtn.addEventListener("click", function(){
+                resetBtn.addEventListener("click", function () {
                     cellContainer.innerHTML = "";
                     endElement.classList.replace("d-flex", "d-none");
                 })
             }
 
+            //console.log(document.querySelectorAll(".blue").length);
+            //console.log(mushroomArray.length);
+            //console.log(cellsNumber - mushroomArray.length);
             //stampa numero in console al click
             //console.log(cellNumber);
             //console.log(counter);
