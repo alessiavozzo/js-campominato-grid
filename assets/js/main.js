@@ -91,8 +91,6 @@ btnPlay.addEventListener("click", function () {
     }
 })
 
-
-
 /* FUNZIONI */
 
 //funzione per generare una cella
